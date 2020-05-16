@@ -1,0 +1,34 @@
+#Necesitamos un menu visual!.
+
+
+#Condiciones de termino
+    # (A) 100% de los sintomas
+    # (B) 70% sintomas + significativa
+
+#Incesario seguir preguntando si se cumple una de las condiciones.
+#   Se realiza verificacion de las condiciones de termino (A,B) tras cada pregunta, y no al final de todo el procedimiento
+
+#El sintoma significativo estara relacionado unicamente para 1 enfermedad.
+
+
+#------------ CONSULTA REGULAR ------------
+#Antes de hacer las consultas se solicita la edad, para determinar la poblacion de riesgo
+#   Infante
+#   Adulto
+#   Adulto mayor
+#Casos
+#1. No tiene ningun sintoma:
+#   La base de conocimiento no puede encontrar su enfermedad
+#       (No ingreso ninguna sintoma)
+#       (No coincida con ninguna de las 2 condiciones de termino)
+#2. Se cumple una de las condiciones (A,B)
+#       Se entrega la enfermedad por pantalla
+#       Mostrar tratamiento en relacion a la poblacion de riesgo.
+
+
+#------------ CONSULTA POR SINTOMAS ------------
+#Necesitamos hacer un menu para separar las consultas
+#   Muestra todos los sintomas por pantalla
+#   Marca los que quiere
+#   Boton adicional para terminar eleccion
+#   Se muestra por pantalla todas las enfermedades relacionadas.
