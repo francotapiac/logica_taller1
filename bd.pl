@@ -25,5 +25,3 @@ significativa(enfermedad('resfrio comun'),sintoma('no muerte')).
 tratamiento(enfermedad('resfrio comun'),poblacionRiesgo(infante),'Ahhh se morira el cabro chico').
 tratamiento(enfermedad('resfrio comun'),poblacionRiesgo(adulto),'Ahhh se morira el adulto').
 tratamiento(enfermedad('resfrio comun'),poblacionRiesgo('adulto mayor'),'Ahhh se morira el adulto mayor').
-
-
