@@ -41,3 +41,5 @@ listaC = list(prolog.query("cumple_condicion_b([tos,fiebre,'escalofrios'],X)"))
 print(obtenerEnefermedades(listaA))
 print(obtenerEnefermedades(listaB))
 print(obtenerEnefermedades(listaC))
+
+#AHHH Holi
