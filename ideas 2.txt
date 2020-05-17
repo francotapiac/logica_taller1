@@ -1,5 +1,6 @@
 #Necesitamos un menu visual!.
 
+#Hay enfermedades que no tienen significativa
 
 #Condiciones de termino
     # (A) 100% de los sintomas
