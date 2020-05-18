@@ -31,15 +31,11 @@ def obtenerEnefermedades(lista):
 
 #Lista de sintomas presentes + Lista de sintomas que no tiene
 listaA = list(prolog.query("que_enfermedad([tos,fiebre,'no muerte'],['escalofrios'],X)"))
-
 #100% de los sintomas
 listaB = list(prolog.query("cumple_condicion_a([tos,fiebre,'no muerte'],X)"))
-
 #70% de los sintomas + significativo
 listaC = list(prolog.query("cumple_condicion_b([tos,fiebre,'escalofrios'],X)"))
 
 print(obtenerEnefermedades(listaA))
 print(obtenerEnefermedades(listaB))
 print(obtenerEnefermedades(listaC))
-
-#AHHH Holi

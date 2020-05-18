@@ -22,6 +22,4 @@ relacion(enfermedad('resfrio mortal'),sintoma(muerte)).
 significativa(enfermedad('resfrio mortal'),sintoma(muerte)).
 significativa(enfermedad('resfrio comun'),sintoma('no muerte')).
 
-tratamiento(enfermedad('resfrio comun'),poblacionRiesgo(infante),'Ahhh se morira el cabro chico').
-tratamiento(enfermedad('resfrio comun'),poblacionRiesgo(adulto),'Ahhh se morira el adulto').
-tratamiento(enfermedad('resfrio comun'),poblacionRiesgo('adulto mayor'),'Ahhh se morira el adulto mayor').
+tratamiento(enfermedad('resfrio comun'),'Ahhh se morira el cabro chico').
