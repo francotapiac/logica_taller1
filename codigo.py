@@ -23,8 +23,45 @@ prolog.assertz("que_enfermedad([X|Xs],N,E):-    relacion(enfermedad(E), sintoma(
 
 #prolog.assertz("cumple_condicion_a([X|Xs], E):- relacion(enfermedad(E),sintoma(X), )")
 
-#Lista de preguntas
 
+
+
+
+# Lista de sintomas
+sintomas = ["Falta de aire",
+            "Dolor en pecho",
+            "Insomnio",
+            "Tos",
+            "Desorientacion",
+            "Silvido al respirar",
+            "Fatiga",
+            "Fiebre",
+            "Escalofrios",
+            "Vomito",
+            "Diarrea",
+            "Produccion de esputo",
+            "Dolor de garganta",
+            "Goteo nasal",
+            "Malestar general",
+            "Congestion",
+            "Estornudos",
+            "Amigdalas inflamadas",
+            "Parches blancos",
+            "Dolor al tragar",
+            "Mal aliento",
+            "Dolor de cabeza",
+            "Glandulas salivales inflamadas",
+            "Perdida apetito",
+            "Dolor encias ",
+            "Glanglios linfaticos inflamados",
+            "Inflamacion nasal",
+            "Secrecion postnasal",
+            "Dolor alrededor de ojos, nariz y/o frente",
+            "Reduccion de olfato y gusto",
+            "Dolor de oido"]
+
+
+# Lista de preguntas
 preguntas = ["Siente una dificultad para respirar similar a una falta de aire?",
              "Ha sentido algun tipo de dolor en el pecho?",
              "Ha sufrido de insomnio ultimamente?",
@@ -43,18 +80,19 @@ preguntas = ["Siente una dificultad para respirar similar a una falta de aire?",
              "Tiene congestion nasal?",
              "Estornuda frecuentemente?",
              "Se han inflamado sus amigdalas?",
-             "Puede ver marcas blancas en su piel?",
+             "Puede ver placas blancas al interior de su garganta?",
              "Siente dolor al tragar?",
              "Ha tenido problemas de mal aliento ultimamente?",
              "Siente un dolor de cabeza?",
              "Siente sus glandulas salivales inflamadas?",
              "Ha notado una perdida de apetito?",
-             "Siente un dolor en sus encias?",
+             "Sufre de un dolor en sus encias?",
              "Siente un dolor en el area interior de sus labios o mejillas?",
+             "Se ha inflamado el interior de su nariz?",
              "Siente una sensacion de goteo en su garganta?",
-             "Sufre de un dolor localizado cerca de sus labios, nariz y/o frente?",
+             "Sufre de un dolor localizado cerca de sus ojos, nariz y/o frente?",
              "Tiene problemas para percibir olores y sabores?",
-             "Padece de un dolor de oidos?"]
+             "Padece de dolor de oidos?"]
 
 # Orden de preguntas (Se recomienda recorrer la lista de preguntas utlizando estos indices)
 
@@ -81,10 +119,10 @@ def mixOrder(factorA, factorB):
 
 # 1 factor
 sinFactores = list(range(0,31))
-fumador = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20, 26, 27, 28, 29, 30, 17, 18, 19, 21, 22, 23, 24, 25]
-joven = [0, 1, 3, 4, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 2, 5, 11, 22, 23, 24, 25, 26, 27, 28, 29, 30]
-viejo = [0, 1, 3, 4, 6, 7, 8, 9, 10, 2, 5, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 39, 30]
-sobrepeso = [0, 1, 2, 3, 5, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+fumador = list(range(0,17)) + [20] + list(range(26,31)) + list(range(17,20)) + list(range(21,26))
+joven = [0, 1, 3, 4] + list(range(6,11)) + list(range(12,22)) + [2, 5, 11] + list(range(22,31))
+viejo = [0, 1, 3, 4] + list(range(6,11)) + [2, 5] + list(range(11,31))
+sobrepeso = [0, 1, 2, 3, 5, 4] + list(range(6,31))
 
 # 2 factores (Se excluye la combinacion joven-viejo)
 fumadorJoven = mixOrder(fumador, joven)
