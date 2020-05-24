@@ -62,37 +62,37 @@ sintomas = ["falta de aire",
 
 
 # Lista de preguntas
-preguntas = ["Siente una dificultad para respirar similar a una falta de aire?",
-             "Ha sentido algun tipo de dolor en el pecho?",
-             "Ha sufrido de insomnio ultimamente?",
-             "Tose frecuentemente?",
-             "Ha padecido de una sensación de desorientación?",
-             "Escucha unleve silbido al respirar?",
-             "Se siente o ha sentido fatigado ultimamente?",
-             "Su temperatura es superior a los 37,2 grados celcius?",
-             "Ha sufrido de escalofríos ultimamente?",
-             "Ha experimentado una sensacion de vomito?",
-             "Ha sufrido de diarrea?",
-             "Se ha producido esputo en su garganta durante los primeros dias?",
-             "Siente un dolor constante en la garganta?",
-             "Su nariz gotea constantemente?",
-             "Ha sentido un malestar general recientemente?",
-             "Tiene congestion nasal?",
-             "Estornuda frecuentemente?",
-             "Se han inflamado sus amigdalas?",
-             "Puede ver placas blancas al interior de su garganta?",
-             "Siente dolor al tragar?",
-             "Ha tenido problemas de mal aliento ultimamente?",
-             "Siente un dolor de cabeza?",
-             "Siente sus glandulas salivales inflamadas?",
-             "Ha notado una perdida de apetito?",
-             "Sufre de un dolor en sus encias?",
-             "Siente un dolor en el area interior de sus labios o mejillas?",
-             "Se ha inflamado el interior de su nariz?",
-             "Siente una sensacion de goteo en su garganta?",
-             "Sufre de un dolor localizado cerca de sus ojos, nariz y/o frente?",
-             "Tiene problemas para percibir olores y sabores?",
-             "Padece de dolor de oidos?"]
+preguntas = ["¿Siente una dificultad para respirar similar a una falta de aire?",
+             "¿Ha sentido algun tipo de dolor en el pecho?",
+             "¿Ha sufrido de insomnio ultimamente?",
+             "¿Tose frecuentemente?",
+             "¿Ha padecido de una sensación de desorientación?",
+             "¿Escucha un leve silbido al respirar?",
+             "¿Se siente o ha sentido fatigado ultimamente?",
+             "¿Su temperatura es superior a los 37,2 grados celcius?",
+             "¿Ha sufrido de escalofríos ultimamente?",
+             "¿Ha experimentado una sensacion de vomito?",
+             "¿Ha sufrido de diarrea?",
+             "¿Se ha producido esputo en su garganta durante los primeros dias?",
+             "¿Siente un dolor constante en la garganta?",
+             "¿Su nariz gotea constantemente?",
+             "¿Ha sentido un malestar general recientemente?",
+             "¿Tiene congestion nasal?",
+             "¿Estornuda frecuentemente?",
+             "¿Se han inflamado sus amigdalas?",
+             "¿Puede ver placas blancas al interior de su garganta?",
+             "¿Siente dolor al tragar?",
+             "¿Ha tenido problemas de mal aliento ultimamente?",
+             "¿Siente un dolor de cabeza?",
+             "¿Siente sus glandulas salivales inflamadas?",
+             "¿Ha notado una perdida de apetito?",
+             "¿Sufre de un dolor en sus encias?",
+             "¿Siente un dolor en el area interior de sus labios o mejillas?",
+             "¿Se ha inflamado el interior de su nariz?",
+             "¿Siente una sensacion de goteo en su garganta?",
+             "¿Sufre de un dolor localizado cerca de sus ojos, nariz y/o frente?",
+             "¿Tiene problemas para percibir olores y sabores?",
+             "¿Padece de dolor de oidos?"]
 
 # Orden de preguntas (Se recomienda recorrer la lista de preguntas utlizando estos indices)
 
@@ -141,16 +141,83 @@ def obtenerEnefermedades(lista):
         lista_aux.append(lista[i]["X"])
     return lista_aux
 
+
+#Funciones para frontend
+def listaPreguntas():
+    return preguntas
+
+def listaFumador():
+    return fumador
+
+def listaJoven():
+    return joven
+
+def listaViejo():
+    return viejo
+
+def listaSobrePeso():
+    return sobrepeso
+
+def listaSimtomas():
+    return sintomas
+
+def listatoString(lista):
+    string = "["
+    for sintoma in lista:
+        string+="'"
+        string += sintoma
+        string+="'"
+        string+=","
+    final = string[:-1]
+    final+="]"
+    if (len(lista) == 0):
+        return "[]"
+    else:
+        return final
+
+def condicionA(lista):
+    query = listatoString(lista)
+    condicion = list(prolog.query("cumple_condicion_a("+query+",X)"))
+    return obtenerEnefermedades(condicion)
+
+def condicionB(lista):
+    query = listatoString(lista)
+    condicion = list(prolog.query("cumple_condicion_b("+query+",X)"))
+    return obtenerEnefermedades(condicion)
+
+def getTratamiento(enfermedad):
+    consulta = list(prolog.query("tratamiento(enfermedad('"+ enfermedad +"'),X)"))
+    tratamiento = obtenerEnefermedades(consulta)[0]
+    return tratamiento
+
+def getEnfermedades(lista1, lista2):
+    conSintomas = listatoString(lista1)
+    sinSintomas = listatoString(lista2)
+    temp = list(prolog.query("que_enfermedad("+conSintomas+","+sinSintomas+",X)"))
+    enfermedades = obtenerEnefermedades(temp)
+    return enfermedades
+
+
+
+#Test
+#listaAux = ['falta de aire','dolor de pecho','insomnio','tos','silvido al respirar']
+#listquery = listatoString(listaAux)
+
 #Lista de sintomas presentes + Lista de sintomas que no tiene
-#listaA = list(prolog.query("que_enfermedad([tos,fiebre,'no muerte'],['escalofrios'],X)"))
+#listaA = list(prolog.query("que_enfermedad(['tos','fiebre'],['escalofrios'],X)"))
 #100% de los sintomas
-#listaB = list(prolog.query("cumple_condicion_a([tos,fiebre,'no muerte'],X)"))
+#listaB = list(prolog.query("cumple_condicion_a(['falta de aire','dolor de pecho','insomnio','tos','silvido al respirar'],X)"))
 #70% de los sintomas + significativo
-#listaC = list(prolog.query("cumple_condicion_b([tos,fiebre,'escalofrios'],X)"))
+#listaC = list(prolog.query("cumple_condicion_b(['dolor de pecho',insomnio,tos,'silvido al respirar'],X)"))
 
 #print(obtenerEnefermedades(listaA))
 #print(obtenerEnefermedades(listaB))
 #print(obtenerEnefermedades(listaC))
+
+#listatemp = getEnfermedades(['tos','fiebre'],['escalofrios','dolor de pecho','silvido al respirar'])
+
+#print(listatemp)
+
 
 #listaD = list(prolog.query("relacion(enfermedad('sinusitis cronica'),sintoma(X))"))
 #listaE = list(prolog.query("tratamiento(enfermedad('sinusitis cronica'),X)"))
