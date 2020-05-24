@@ -136,7 +136,7 @@ def siguiente():
         textPreguntas.append(preguntas[pos])
 
     #label = canvas2.create_text(300,50,text = textPreguntas[indicePregunta], font = ("Roboto",15, "bold"))
-    label.place(x=0,y=0)
+    label.place(x=10,y=0)
     label["text"] = textPreguntas[indicePregunta]
     
     
@@ -287,7 +287,7 @@ frame.place_forget()
 
 
 
-label = Label(frame, text="", font= ("Roboto",25, "bold"), anchor = "center", width = 26, justify="center" ,bg="lavender", wraplength=685)
+label = Label(frame, text="", font= ("Roboto",25, "bold"), anchor = "center", justify="left" ,bg="lavender", wraplength=680)
 label.place_forget()
 
 
