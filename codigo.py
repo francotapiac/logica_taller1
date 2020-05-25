@@ -21,15 +21,10 @@ prolog.assertz("que_enfermedad([], [], E)")
 prolog.assertz("que_enfermedad([], [N|Ns], E):- not(relacion(enfermedad(E), sintoma(N))), que_enfermedad([],Ns,E)")
 prolog.assertz("que_enfermedad([X|Xs],N,E):-    relacion(enfermedad(E), sintoma(X)), que_enfermedad(Xs,N,E)")
 
-#prolog.assertz("cumple_condicion_a([X|Xs], E):- relacion(enfermedad(E),sintoma(X), )")
-
-
-
-
 
 # Lista de sintomas
 sintomas = ["falta de aire",
-            "dolor en pecho",
+            "dolor de pecho",
             "insomnio",
             "tos",
             "desorientacion",
@@ -52,7 +47,7 @@ sintomas = ["falta de aire",
             "dolor de cabeza",
             "glandulas salivales inflamadas",
             "perdida apetito",
-            "dolor encias ",
+            "dolor encias",
             "glanglios linfaticos inflamados",
             "inflamacion nasal",
             "secrecion postnasal",
@@ -191,20 +186,29 @@ def getTratamiento(enfermedad):
     return tratamiento
 
 def getEnfermedades(lista1, lista2):
-    conSintomas = listatoString(lista1)
     sinSintomas = listatoString(lista2)
-    temp = list(prolog.query("que_enfermedad("+conSintomas+","+sinSintomas+",X)"))
-    enfermedades = obtenerEnefermedades(temp)
-    return enfermedades
-
+    lista_aux = []
+    string = "'"
+    for sintoma in lista1:
+        temp1 = list(prolog.query("que_enfermedad(["+string+sintoma+string+"]," + sinSintomas + ",X)"))
+        for enfermedad in temp1:
+            if not(enfermedad in lista_aux):
+                lista_aux.append(enfermedad)
+    return obtenerEnefermedades(lista_aux)
 
 
 #Test
 #listaAux = ['falta de aire','dolor de pecho','insomnio','tos','silvido al respirar']
+#listaVacia = []
 #listquery = listatoString(listaAux)
 
 #Lista de sintomas presentes + Lista de sintomas que no tiene
-#listaA = list(prolog.query("que_enfermedad(['tos','fiebre'],['escalofrios'],X)"))
+
+#print(getEnfermedades(sintomas,listaVacia))
+
+
+
+
 #100% de los sintomas
 #listaB = list(prolog.query("cumple_condicion_a(['falta de aire','dolor de pecho','insomnio','tos','silvido al respirar'],X)"))
 #70% de los sintomas + significativo
