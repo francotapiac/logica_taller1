@@ -207,7 +207,6 @@ def respuestaNo():
 
 def finPreguntas():
     subprocess.Popen(["python", "viewMain.py"])
-    print(listaConfirmados)
     welcome.destroy()
 
 def tratamiento(lista):
