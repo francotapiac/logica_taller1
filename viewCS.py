@@ -172,8 +172,11 @@ def respuestaSi():
             respuesta+="Se le recomienda ir al medico para más detalles"
             label.place_forget()
             label3 = Label(frame, text="", font= ("Roboto",15), width =73,anchor = "nw", justify="left" ,bg="lavender",wraplength=685,padx=15)
-            label3.place(x=0,y=50)
+            label3.place(x=0,y=10)
             label3["text"] = respuesta
+            botonNo.place_forget()
+            botonSi.place_forget()
+            botonFin.place(x=390,y=500)
     else:
         pos = finalPreguntas[indicePregunta]
         listaConfirmados.append(sintomas[pos])
@@ -209,8 +212,11 @@ def respuestaNo():
             respuesta+="Se le recomienda ir al medico para más detalles"
             label.place_forget()
             label3 = Label(frame, text="", font= ("Roboto",15), width =73,anchor = "nw", justify="left" ,bg="lavender",wraplength=685,padx=15)
-            label3.place(x=0,y=50)
+            label3.place(x=0,y=10)
             label3["text"] = respuesta
+            botonNo.place_forget()
+            botonSi.place_forget()
+            botonFin.place(x=390,y=500)
                 
         
     else:
